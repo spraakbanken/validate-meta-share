@@ -1,0 +1,40 @@
+<!doctype html>
+<div class="messages-block">
+{% with errors = get_flashed_messages(category_filter=["error"]) %}
+{% if errors %}
+<div class="message error">
+  <!-- <a class="close" href="#">×</a> -->
+  <ul>
+    {%- for msg in errors %}
+    <li>{{ msg }}</li>
+    {% endfor -%}
+  </ul>
+</div>
+{% endif %}
+{% endwith %}
+
+{% with warnings = get_flashed_messages(category_filter=["warning"]) %}
+{% if warnings %}
+<div class="message warning">
+  <ul>
+    {%- for msg in warnings %}
+    <li>{{ msg }}</li>
+    {% endfor -%}
+  </ul>
+</div>
+{% endif %}
+{% endwith %}
+
+{% with successes = get_flashed_messages(category_filter=["success"]) %}
+{% if successes %}
+<div class="message success">
+  <ul>
+    {%- for msg in successes %}
+    <li>{{ msg }}</li>
+    {% endfor -%}
+  </ul>
+</div>
+{% endif %}
+{% endwith %}
+</div>
+{% block body %}{% endblock %}

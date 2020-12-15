@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="icon" type="image/png" href="{{ url_for('static', filename='sbx-favicon-16x16.png') }}"/>
+      <link href="{{ url_for('static', filename='styles.css') }}" type="text/css" rel="stylesheet" />
+    </head>
+
+<body>
+<title>META-SHARE validation</title>
+<div class="main">
+  <div class="pre-upload">
+    <div class="header">
+        <h1><a href="{{ url_for('general.upload_file') }}">META-SHARE validation</a></h1>
+        <img class="loading" src="{{ url_for('static', filename='loading.gif') }}"></img>
+    </div>
+    <div style="clear: both;">
+      <p>Upload an XML file for META-SHARE validation:</p>
+      <form action="" method="POST" enctype="multipart/form-data">
+        <input type="file" id="file" name="file"/>
+        <input type="submit" value="Upload file" onclick="loading();"/>
+    </form>
+    <br>
+    <p>Or supply a URL to an XML file for META-SHARE validation:</p>
+    <form action="" method="POST">
+        <input type="url" name="url" placeholder="www.example.se/my-resource.xml", size="26"/>
+        <input type="submit" value="Upload from URL" onclick="loading();"/>
+    </form>
+    </div>
+  </div>
+
+  {% if result %}
+  <div class="result">
+  </div>
+  {% endif %}
+</div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">// <![CDATA[
+    function loading(){
+        jQuery(".messages-block").hide();
+        jQuery(".loading").show();
+        jQuery(".main").css("cursor", "wait");
+    }
+// ]]></script>
+
+</html>
+{% endblock %}
