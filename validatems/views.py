@@ -92,7 +92,8 @@ def validate_meta_share(fileobj):
     """Validate uploaded XML against META-SHARE xsd schema."""
     from lxml import etree
 
-    xmlschema_doc = etree.parse("validatems/static/META-SHARE-Resource.xsd")
+    # xmlschema_doc = etree.parse("validatems/static/META-SHARE-Resource.xsd")
+    xmlschema_doc = etree.parse("validatems/static/schema-3.1/META-SHARE-Resource.xsd")
     xmlschema = etree.XMLSchema(xmlschema_doc)
 
     xml_doc = etree.parse(str(fileobj))
